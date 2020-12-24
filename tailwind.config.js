@@ -1,4 +1,13 @@
 const colors = require("tailwindcss/colors");
+const customColors = {
+   black: "#000000",
+   emperor: "#4F4F4F",
+   gray20: "#333333",
+   gray3: "#828282",
+   marzipan: "#F7DF94",
+   silverChalice: "#A9A9A9",
+   white: "#ffffff",
+};
 
 module.exports = {
    purge: [],
@@ -26,6 +35,7 @@ module.exports = {
          indigo: colors.indigo,
          purple: colors.violet,
          pink: colors.pink,
+         ...customColors,
       },
       spacing: {
          px: "1px",
@@ -205,8 +215,13 @@ module.exports = {
             '"Courier New"',
             "monospace",
          ],
+         raleway: "Raleway",
       },
       fontSize: {
+         "14px": "14px",
+         "18px": "18px",
+         "24px": "24px",
+         "36px": "36px",
          xs: ["0.75rem", { lineHeight: "1rem" }],
          sm: ["0.875rem", { lineHeight: "1.25rem" }],
          base: ["1rem", { lineHeight: "1.5rem" }],
