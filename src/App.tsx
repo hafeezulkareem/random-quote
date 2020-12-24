@@ -1,7 +1,9 @@
 import React from "react";
 
+import QuoteApp from "./RandomQuote/components/QuoteApp";
+
 function App() {
-   return <div></div>;
+   return <QuoteApp />;
 }
 
 export default App;

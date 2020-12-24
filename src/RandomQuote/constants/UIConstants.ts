@@ -1,0 +1,2 @@
+export const RANDOM_QUOTE = "RANDOM_QUOTE";
+export const AUTHOR_QUOTES = "AUTHOR_QUOTES";
