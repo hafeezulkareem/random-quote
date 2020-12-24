@@ -1,7 +1,3 @@
-import tw, { styled } from "twin.macro";
+import { styled } from "twin.macro";
 
-export const StyledComponent = styled.div`
-   ${tw`
-
-    `}
-`;
+export const QuoteWithAuthor = styled.div``;

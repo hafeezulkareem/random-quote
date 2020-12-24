@@ -39,6 +39,6 @@ export const RandomButtonText = styled(Typo18RalewayEmperorMedium)`
 
 export const QuotesContainer = styled.div`
    ${tw`
-        flex h-full items-center justify-center
+        flex flex-col h-full items-center justify-center
     `}
 `;

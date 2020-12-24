@@ -6,6 +6,9 @@ import { loading, succeeded } from "../../../Common/constants/APIState";
 import { RootState } from "../../store";
 
 import Quote from "../Quote";
+import QuoteAuthor from "../QuoteAuthor";
+
+import { QuoteWithAuthor } from "./styledComponents";
 
 interface RandomQuoteProps {
    status: string;
@@ -22,7 +25,15 @@ const RandomQuote = (props: RandomQuoteProps) => {
       case loading:
          return <div>loading...</div>;
       case succeeded:
-         return <Quote quote={activeQuote} />;
+         return (
+            <QuoteWithAuthor>
+               <Quote quote={activeQuote} />
+               <QuoteAuthor
+                  authorName={activeQuote ? activeQuote?.quoteAuthor : ""}
+                  quoteGenre={activeQuote ? activeQuote?.quoteGenre : ""}
+               />
+            </QuoteWithAuthor>
+         );
       default:
          return <></>;
    }
