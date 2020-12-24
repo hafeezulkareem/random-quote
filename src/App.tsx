@@ -1,6 +1,6 @@
 import React from "react";
 
-import QuoteApp from "./RandomQuote/components/QuoteApp";
+import QuoteApp from "./QuoteGenerator/components/QuoteApp";
 
 function App() {
    return <QuoteApp />;
