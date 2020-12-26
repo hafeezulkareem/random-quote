@@ -4,7 +4,7 @@ import { Typo36BlackRalewayMedium } from "../../../Common/typos";
 
 export const QuoteContainer = styled.div`
    ${tw`
-        flex pl-12 md:pl-16 lg:pl-24 border-0 border-l-8 border-solid border-marzipan
+        flex pl-12 md:pl-16 lg:pl-24 border-0 border-l-8 border-solid border-marzipan mt-8
     `}
    max-width: 720px;
 `;

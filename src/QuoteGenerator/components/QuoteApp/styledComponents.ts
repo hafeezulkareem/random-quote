@@ -2,15 +2,11 @@ import tw, { styled } from "twin.macro";
 
 import { Typo18RalewayEmperorMedium } from "../../../Common/typos";
 
-export const QuoteAppContainer = styled.div`
-   ${tw`
-        w-screen h-screen
-    `}
-`;
+export const QuoteAppContainer = styled.div``;
 
 export const QuotesPageContainer = styled.div`
    ${tw`
-        h-full flex flex-col
+        min-h-screen flex flex-col
     `}
 `;
 
@@ -39,6 +35,6 @@ export const RandomButtonText = styled(Typo18RalewayEmperorMedium)`
 
 export const QuotesContainer = styled.div`
    ${tw`
-        flex flex-col h-full items-center justify-center
+        flex flex-col items-center justify-center py-8 my-auto
     `}
 `;

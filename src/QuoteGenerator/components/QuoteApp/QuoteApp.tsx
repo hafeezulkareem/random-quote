@@ -5,10 +5,11 @@ import { HiOutlineRefresh } from "react-icons/hi";
 import { idle, loading } from "../../../Common/constants/APIState";
 
 import { RANDOM_QUOTE } from "../../constants/UIConstants";
-import { getRandomQuote } from "../../reducers/quoteSlice";
+import { getRandomQuote, updatePage } from "../../reducers/quoteSlice";
 import { RootState } from "../../store";
 
 import RandomQuote from "../RandomQuote";
+import AuthorQuotes from "../AuthorQuotes";
 
 import {
    QuoteAppContainer,
@@ -18,6 +19,7 @@ import {
    RandomButton,
    RandomButtonText,
 } from "./styledComponents";
+import AuthorInfoFooter from "../AuthorInfoFooter";
 
 const QuoteApp = () => {
    const dispatch = useDispatch();
@@ -34,13 +36,18 @@ const QuoteApp = () => {
 
    const page = useSelector((state: RootState) => state.quotesData.page);
 
+   const getRandomAuthorQuote = () => {
+      dispatch(updatePage(RANDOM_QUOTE));
+      dispatch(getRandomQuote());
+   };
+
    return (
       <QuoteAppContainer>
          <QuotesPageContainer>
             <QuoteGeneratorButtonContainer>
                <RandomButton
                   disabled={getRandomQuoteStatus === loading}
-                  onClick={() => dispatch(getRandomQuote())}
+                  onClick={getRandomAuthorQuote}
                >
                   <RandomButtonText>random</RandomButtonText>
                   <HiOutlineRefresh />
@@ -50,9 +57,10 @@ const QuoteApp = () => {
                {page === RANDOM_QUOTE ? (
                   <RandomQuote status={getRandomQuoteStatus} />
                ) : (
-                  <div>Quotes list</div>
+                  <AuthorQuotes />
                )}
             </QuotesContainer>
+            <AuthorInfoFooter />
          </QuotesPageContainer>
       </QuoteAppContainer>
    );

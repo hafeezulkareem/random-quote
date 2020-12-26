@@ -41,10 +41,25 @@ export const getRandomQuote = createAsyncThunk(
    }
 );
 
+export const getAuthorQuotes = createAsyncThunk(
+   "quotes/getAuthorQuotes",
+   async (author: string) => {
+      const response = await makeAPIRequest("/quotes/", apiMethods.get, {
+         author,
+         limit: 10,
+      });
+      return response;
+   }
+);
+
 const quoteSlice = createSlice({
    name: "quotesData",
    initialState,
-   reducers: {},
+   reducers: {
+      updatePage: (state, action) => {
+         state.page = action.payload;
+      },
+   },
    extraReducers: {
       [getRandomQuote.pending.toString()]: (state, action) => {
          state.getRandomQuoteStatus = loading;
@@ -59,9 +74,34 @@ const quoteSlice = createSlice({
          state.activeQuote = { id, quoteText, quoteAuthor, quoteGenre };
       },
       [getRandomQuote.rejected.toString()]: (state, action) => {
+         state.getRandomQuoteStatus = failed;
+      },
+      [getAuthorQuotes.pending.toString()]: (state, action) => {
+         state.getAuthorQuotesStatus = loading;
+      },
+      [getAuthorQuotes.fulfilled.toString()]: (
+         state,
+         action: PayloadAction<GetQuotesType>
+      ) => {
+         state.getAuthorQuotesStatus = succeeded;
+         const { data } = action.payload;
+         state.quotes = [];
+         data.forEach((quote) => {
+            const { _id: id, quoteText, quoteAuthor, quoteGenre } = quote;
+            state.quotes.push({
+               id,
+               quoteText,
+               quoteAuthor,
+               quoteGenre,
+            });
+         });
+      },
+      [getAuthorQuotes.rejected.toString()]: (state, action) => {
          state.getAuthorQuotesStatus = failed;
       },
    },
 });
+
+export const { updatePage } = quoteSlice.actions;
 
 export default quoteSlice.reducer;

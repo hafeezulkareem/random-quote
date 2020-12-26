@@ -17,11 +17,7 @@ export const AuthorDetailsContainer = styled.div`
     `}
 `;
 
-export const AuthorNameText = styled(Typo24EmperorRalewayBold)`
-   ${tw`
-
-    `}
-`;
+export const AuthorNameText = styled(Typo24EmperorRalewayBold)``;
 
 export const QuoteGenreText = styled(Typo14RalewayGray3Medium)`
    ${tw`
